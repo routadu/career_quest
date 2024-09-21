@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1081809524013",
+    "project_id": "career-quest-a8c11",
+    "storage_bucket": "career-quest-a8c11.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081809524013:android:13b1e0c9a9f677d76dafa4",
+        "android_client_info": {
+          "package_name": "com.akrdev.career_quest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081809524013-1uihp4rqlb9s92upqog71qot978g5m7m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.akrdev.career_quest",
+            "certificate_hash": "cd2fe63fad9c1130068fc7b4709cee2951366f9d"
+          }
+        },
+        {
+          "client_id": "1081809524013-nquftf5r88i5alv4rk12mes1ckjqftdu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHuy5S-uOasFmkgu4PSmlIcpL1PuCENMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081809524013-nquftf5r88i5alv4rk12mes1ckjqftdu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1081809524013-3t7qbhfi9nroa50fgvkd3ddq8mqajd1k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.akrdev.careerQuest"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
