@@ -145,9 +145,7 @@ class ChatBubble extends StatelessWidget {
         ),
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: data.isUser
-              ? Theme.of(context).colorScheme.secondary
-              : Theme.of(context).colorScheme.primary,
+          color: data.isUser ? const Color(0xFF373737) : Colors.transparent,
           // ? const Color.fromARGB(255, 82, 80, 80)
           // : const Color(0xFF1F1F1F),
           borderRadius: BorderRadius.circular(10),
@@ -164,8 +162,8 @@ class ChatBubble extends StatelessWidget {
                 data.message,
                 style: TextStyle(
                   color: data.isUser
-                      ? Theme.of(context).colorScheme.onSecondary
-                      : Theme.of(context).colorScheme.onPrimary,
+                      ? Theme.of(context).colorScheme.onSurface
+                      : Theme.of(context).colorScheme.onSurface,
                 ),
               ),
       ),

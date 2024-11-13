@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:career_quest/models/question.dart';
 import 'package:career_quest/providers/providers.dart';
 import 'package:career_quest/services/auth_service.dart';
 import 'package:career_quest/views/main/main_page.dart';
 import 'package:career_quest/views/main/login_page.dart';
+import 'package:career_quest/views/main/quiz_screen.dart';
 import 'package:career_quest/views/registration/email_verify_page.dart';
 import 'package:career_quest/views/registration/parentuser_details_page.dart';
 import 'package:career_quest/views/registration/user_details_page.dart';
@@ -68,6 +70,20 @@ class CustomRouter {
           pageBuilder: (context, state) =>
               const MaterialPage(child: ParentuserDetailsPage()),
         ),
+        GoRoute(
+          name: QuizScreen.name,
+          path: QuizScreen.path,
+          builder: (context, state) {
+            final questions = state.extra
+                as List<Question>?; // Get the extra data (List<Question>)
+            if (questions == null) {
+              return const Scaffold(
+                body: Center(child: Text('No questions available')),
+              );
+            }
+            return QuizScreen(questions: questions);
+          },
+        ),
       ],
       redirect: (context, state) async {
         AuthService authService = ref.read(authServiceProvider);
@@ -79,6 +95,9 @@ class CustomRouter {
           } else if (!authService.isUserRegistered) {
             return UserDetailsPage.path;
           } else {
+            if (state.fullPath?.contains("quiz") ?? false) {
+              return QuizScreen.path;
+            }
             return MainPage.path;
           }
         } else {

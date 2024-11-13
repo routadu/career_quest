@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "1081809524013-es39puf338so2ncls3e1l9urnu2tnlct.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.akrdev.career_quest",
+            "certificate_hash": "c8229966f0c28f5b52427a3f1028437fb32d6a2e"
+          }
+        },
+        {
           "client_id": "1081809524013-nquftf5r88i5alv4rk12mes1ckjqftdu.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -50,6 +50,10 @@ dependencies:
   google_nav_bar: ^5.0.6
   loading_indicator: ^3.1.1
   google_fonts: ^6.2.1
+  sign_in_with_apple: ^5.0.0  # Ensure you're using a recent version
+  shared_preferences: ^2.3.2
+  fl_chart: ^0.69.0
+
 
 dev_dependencies:
   flutter_test:

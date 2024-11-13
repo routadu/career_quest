@@ -19,13 +19,21 @@ class LoginPage extends ConsumerWidget {
         child: Column(
           children: [
             // const Text("Youtube"),
+            SizedBox(height: MediaQuery.of(context).size.height / 4),
+            const Text(
+              "Career Quest",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             Expanded(child: Container()),
             LoginButton(
               onPressed: () async => kIsWeb
                   ? await ref.read(authServiceProvider).signInWithGoogleWeb()
                   : await ref.read(authServiceProvider).signInWithGoogle(),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 80),
           ],
         ),
       ),

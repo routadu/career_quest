@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:career_quest/providers/providers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -30,17 +31,35 @@ class AuthService {
   bool get isUserRegistered => _isUserRegistered;
 
   void streamListener(User? user) async {
-    await user?.reload();
-    _isUserRegistered = await _updateRegistrationStatus();
+    try {
+      await user?.reload();
+      ref.read(userServiceProvider).updateUser(user);
+    } on FirebaseAuthException catch (_) {
+      await logout();
+    }
+    updateRegistrationStatus();
     ref.read(routerProvider).router.refresh();
   }
 
-  Future<bool> _updateRegistrationStatus() async {
-    return auth.currentUser == null
-        ? false
-        : ref
-            .read(firestoreServiceProvider)
-            .userDocumentExists(auth.currentUser!.uid);
+  Future<bool> updateRegistrationStatus({bool override = false}) async {
+    if (auth.currentUser == null) {
+      debugPrint("Auth currentUser is null");
+      return false;
+    }
+    debugPrint("Auth currentUser: ${auth.currentUser.toString()}");
+    final userReegistrationStatusFromCache =
+        await ref.read(localStorageProvider).getUserRegistreationStatus();
+    if (!override && userReegistrationStatusFromCache != null) {
+      _isUserRegistered = userReegistrationStatusFromCache;
+    } else {
+      _isUserRegistered = await ref
+          .read(firestoreServiceProvider)
+          .userDocumentExists(auth.currentUser!.uid);
+      await ref
+          .read(localStorageProvider)
+          .setUserRegistreationStatus(_isUserRegistered);
+    }
+    return _isUserRegistered;
   }
 
   Future reloadUser() async {

@@ -9,6 +9,7 @@ class User {
   String email;
   String educationLevel;
   List<String> interests;
+  String? careerPath;
 
   User({
     required this.id,
@@ -19,6 +20,7 @@ class User {
     required this.email,
     required this.educationLevel,
     required this.interests,
+    this.careerPath,
   });
 
   factory User.fromMap(String uid, Map<String, dynamic> data) {
@@ -32,6 +34,7 @@ class User {
         email: data['email'],
         educationLevel: data['educationLevel'],
         interests: List.from(data['interests']),
+        careerPath: data['careerPath'] ?? "",
       );
     } catch (e) {
       return User.empty();
@@ -48,6 +51,7 @@ class User {
       email: "",
       educationLevel: "",
       interests: [],
+      careerPath: "",
     );
   }
 
@@ -61,6 +65,7 @@ class User {
       "email": email,
       "educationLevel": educationLevel,
       "interests": interests,
+      "careerPath": careerPath,
     };
   }
 
